@@ -5,12 +5,8 @@ from fastapi.responses import PlainTextResponse
 
 app = FastAPI(docs_url=None, redoc_url=None, openapi_url=None)
 
-@app.get('/')
-def read_root():
-    return {"Hello": "World"}
-
 @app.post('/call')
-async def read_root(request: Request, response: Response):
+async def post_call(request: Request, response: Response):
     #print(request.url)
     #print(request.headers)
     #body = json.loads(await request.body())

@@ -27,7 +27,11 @@ def make_symlink(actual: Path, phony: Path):
 
 
 if __name__ == '__main__':
-    fn_listener = os.environ['FN_LISTENER'].replace('unix:','')
+    fn_listener = '/tmp/fnlsnr.sock'
+    try:
+        os.environ['FN_LISTENER'].replace('unix:','')
+    except:
+        pass
     print(f'FN_LISTENER: {fn_listener}', file=sys.stderr)
     actual = Path(fn_listener)
     phony = Path(str(actual.parent) + '/' + randomname(8) + '_' + actual.name)
