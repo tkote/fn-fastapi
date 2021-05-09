@@ -1,0 +1,6 @@
+# https://github.com/fnproject/docs/blob/master/fn/develop/func-file.md
+schema_version: 20180708
+name: fn-fastapi
+version: 0.0.1
+timeout: 300
+memory: 256 # 128/256/512/1024

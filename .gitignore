@@ -1,0 +1,6 @@
+.*
+!.gitignore
+
+*.sh
+*.lock
+__pycache__
