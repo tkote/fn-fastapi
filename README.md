@@ -19,7 +19,7 @@ Fn/Functions がどういう仕様で Unix Domain Socket を使ってコンテ�
 
 ## ビルド & 実行
 
-* ローカルでビルド & 実行
+* ローカルで実行
 
   ```bash
   # preparation
