@@ -2,7 +2,7 @@
 
 ## Fn (OCI Functions) の Function を FDK を使わずに作成する方法 - Python/FastAPI 編
 
-FDK (Function Development Kit) を使わずに「 [netty と reactor-netty で実装してみた](https://github.com/tkote/fn-netty) 」を以前公開したが、今回はその Python/FastAPI 編。使い慣れたフレームワークを使って Fnctions を開発したいという人は多いハズ。
+FDK (Function Development Kit) を使わずに Function を作る方法として「 [netty と reactor-netty で実装してみた](https://github.com/tkote/fn-netty) 」を以前公開したが、今回はその Python/FastAPI 編。使い慣れたフレームワークを使って Fnctions を開発したいという人は多いハズ。
 
 ## 仕組み
 
