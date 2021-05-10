@@ -106,3 +106,17 @@ x-content-sha256: f4OxZX/x/FO5LcGBSKHWXfwtSx+j1ncoSt3SABJtkGk=
 [REQUEST BODY]
 Hello World!
 ```
+
+OCI Functions で、サーバー起動から最初のリクエスト処理までのログ
+
+```
+ENV FN_LISTENER: unix:/tmp/iofs/lsnr.sock
+actual: /tmp/iofs/lsnr.sock
+phony: /tmp/iofs/ldyDK2Jn_lsnr.sock
+INFO:     Started server process [6]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on unix socket /tmp/iofs/ldyDK2Jn_lsnr.sock (Press CTRL+C to quit)
+Ready to receive calls via /tmp/iofs/lsnr.sock -> ldyDK2Jn_lsnr.sock
+INFO:      - \"POST /call HTTP/1.1\" 200 OK
+```
