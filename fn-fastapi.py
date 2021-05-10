@@ -6,6 +6,8 @@ from starlette.requests import SERVER_PUSH_HEADERS_TO_COPY
 import uvicorn
 from main import app
 
+DEFAULT_LISTENER = '/tmp/fnlsnr.sock'
+
 def randomname(n):
    return ''.join(random.choices(string.ascii_letters + string.digits, k=n))
 
@@ -23,18 +25,21 @@ def make_symlink(actual: Path, phony: Path):
         time.sleep(100/1000)
     phony.chmod(0o666)
     actual.symlink_to(phony.name)
-    print(f'Ready to receive calls via {actual} -> {phony.name}', file=sys.stderr)
+    print(f'Ready to receive calls via {actual} -> {phony.name}', file=sys.stderr, flush=True)
 
 
 if __name__ == '__main__':
-    fn_listener = '/tmp/fnlsnr.sock'
+    fn_listener = None
     try:
-        os.environ['FN_LISTENER'].replace('unix:','')
+        print(f'ENV FN_LISTENER: {os.environ["FN_LISTENER"]}', file=sys.stderr)
+        fn_listener = os.environ['FN_LISTENER'].replace('unix:','')
     except:
+        print(f'ENV FN_LISTENER not defined - using default: {DEFAULT_LISTENER}', file=sys.stderr)
+        fn_listener = DEFAULT_LISTENER
         pass
-    print(f'FN_LISTENER: {fn_listener}', file=sys.stderr)
     actual = Path(fn_listener)
     phony = Path(str(actual.parent) + '/' + randomname(8) + '_' + actual.name)
+    print(f'actual: {actual}', file=sys.stderr)
     print(f'phony: {phony}', file=sys.stderr)
 
     unlink(actual, phony)
