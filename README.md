@@ -2,11 +2,11 @@
 
 ## Fn (OCI Functions) の Function を FDK を使わずに作成する方法 - Python/FastAPI 編
 
-FDK (Function Development Kit) を使わずに Function を作る方法として「 [netty と reactor-netty で実装してみた](https://github.com/tkote/fn-netty) 」を以前公開したが、今回はその Python/FastAPI 編。使い慣れたフレームワークを使って Fnctions を開発したいという人は多いハズ。
+FDK (Function Development Kit) を使わずに Function を作る方法として「 [netty と reactor-netty で実装してみた](https://github.com/tkote/fn-netty) 」を以前紹介したが、今回はその Python/FastAPI 編。使い慣れたフレームワークを使って Fnctions を開発したいという人は多いハズ。
 
 ## 仕組み
 
-Functions のロジックを実装しているもの (main.py)と、ASGI (Asynchronous Server Gateway Interface) 実装である uvicorn の起動やソケットまわりのお世話をしているもの (fn-fastapi.py) の二つで構成されていて、fn-fastapi.py は全くいじる必要なし。  
+Functions のロジックを実装しているもの (main.py)と、ASGI (Asynchronous Server Gateway Interface) 実装である uvicorn の起動や Fn/Functions の流儀に従ってソケットまわりのお世話をしているもの (fn-fastapi.py) の二つで構成されていて、fn-fastapi.py は全くいじる必要なし。  
 main.py で 通常 FastAPI で API を実装するのと同じように、`/call` に対する POST リクエストを実装すればOK。ここでは簡易的なデモ実装をしている。
 
 ```python
@@ -33,7 +33,7 @@ Fn/Functions がどういう仕様で Unix Domain Socket を使ってコンテ�
   $ curl --unix-socket /tmp/fnlsnr.sock -X POST -d 'Hello World!' http:/call
   ```
 
-* Docker imageを作成 & 実行
+* Docker image を作成 & 実行
   
   ```bash
   # build
@@ -69,7 +69,7 @@ Fn/Functions がどういう仕様で Unix Domain Socket を使ってコンテ�
 
 * OCI Functions にデプロイ & 実行
 
-  OCI Functionsで アプリケーション funcapp が作成されている前提で
+  OCI Functions で アプリケーション funcapp が作成されている前提で
 
   ```bash
   # setup Fn CLI
